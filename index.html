@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser RAM Memory Test</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Browser RAM Memory Test</h1>
+        
+        <div class="controls">
+            <div class="input-group">
+                <label for="chunk-size">Chunk Size (MB):</label>
+                <input type="number" id="chunk-size" value="100" min="1" max="1000">
+            </div>
+            
+            <div class="input-group">
+                <label for="max-memory">Max Memory (MB):</label>
+                <input type="number" id="max-memory" value="4000" min="100" max="16000">
+            </div>
+            
+            <div class="button-group">
+                <button id="start-test">Start Test</button>
+                <button id="stop-test" disabled>Stop Test</button>
+                <button id="release-memory" disabled>Release Memory</button>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <span>Allocated Memory:</span>
+                <span id="allocated-memory">0 MB</span>
+            </div>
+            <div class="stat-item">
+                <span>Allocation Speed:</span>
+                <span id="allocation-speed">0 MB/s</span>
+            </div>
+            <div class="stat-item">
+                <span>Test Duration:</span>
+                <span id="test-duration">0s</span>
+            </div>
+        </div>
+        
+        <!-- Browser memory stats section -->
+        <div class="browser-stats">
+            <h3>Browser Memory Stats</h3>
+            <div class="browser-stats-container" id="browser-stats">
+                <p>Not available in this browser</p>
+            </div>
+        </div>
+        
+        <!-- Memory usage graph with Chart.js -->
+        <div class="graph-container">
+            <h3>Memory Usage Over Time</h3>
+            <div class="chart-container">
+                <canvas id="memory-graph"></canvas>
+            </div>
+            <div class="graph-legend" id="browser-memory-legend" style="display: none;">
+                <div class="legend-item">
+                    <span>Browser's actual JS Heap limit is being used for measurements</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="memory-progress"></div>
+        </div>
+        
+        <div class="results" id="results">
+            <h2>Test Results</h2>
+            <p>Run the test to see results.</p>
+        </div>
+    </div>
+    
+    <script src="memory-test.js"></script>
+</body>
+</html>
